@@ -13,6 +13,8 @@ services:
       - ./../../data/dump:/db-dump
     ports:
       - "5432:5432"
+    networks:
+          - docker-practice-net
 
   redis:
     image: redis
@@ -22,3 +24,10 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "6379:6379"
+    networks:
+      - docker-practice-net
+
+networks:
+  docker-practice-net:
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
