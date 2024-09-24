@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_DB: school
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: school
+      PGDATA: /data/postgres
+    volumes:
+      - ./../../data/postgres:/data/postgres
+      - ./../../data/dump:/db-dump
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis
+    container_name: redis_container
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
