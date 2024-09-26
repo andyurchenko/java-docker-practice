@@ -2,7 +2,7 @@ package ru.thumbtack.dockerpracticejava.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @Setter
