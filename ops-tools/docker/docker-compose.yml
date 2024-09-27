@@ -1,5 +1,20 @@
 services:
 
+  app:
+    build:
+      context: ../../
+      dockerfile: ops-tools/docker/Dockerfile
+    container_name: app_container
+    restart: no
+    ports:
+      - "8888:8080"
+    networks:
+      - docker-practice-net
+    depends_on:
+      - redis
+      - postgres
+
+
   postgres:
     image: postgres
     container_name: postgres_container
@@ -26,18 +41,6 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "6379:6379"
-    networks:
-      - docker-practice-net
-
-
-  app:
-    build:
-      context: ../../
-      dockerfile: ops-tools/docker/Dockerfile
-    container_name: app_container
-    restart: always
-    ports:
-      - "8888:8080"
     networks:
       - docker-practice-net
 
