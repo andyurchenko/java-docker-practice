@@ -36,7 +36,7 @@ public class CheckController {
         try {
             bookService.findAll();
         } catch (Exception error) {
-            map.put("status", "Postgres not connected");
+            map.put("status", "Postgres NOT connected");
         }
 
         return map;
@@ -53,7 +53,9 @@ public class CheckController {
         try {
             sessionRepository.findAll();
         } catch (Exception error) {
-            map.put("status", "Redis not connected");
+            System.out.println(error.getCause().getMessage());
+            System.out.println(error.getMessage());
+            map.put("status", "Redis NOT connected");
         }
 
         return map;

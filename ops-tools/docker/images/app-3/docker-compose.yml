@@ -35,10 +35,9 @@ services:
     networks:
       - docker-practice-net
 
-
   redis:
-    container_name: redis_container
     image: redis:alpine3.20
+    container_name: redis_container
     restart: always
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
